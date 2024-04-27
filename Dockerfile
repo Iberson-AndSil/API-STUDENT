@@ -1,1 +1,1 @@
-FROM amazoncorretto:18-allpine-jdk
+FROM amazoncorretto:18-alpine-jdk
