@@ -1,0 +1,49 @@
+package com.example.demo.controllers;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
+import com.example.demo.models.alumno;
+import com.example.demo.services.alumnoServices;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+
+@RestController
+@RequestMapping("/alumno")
+public class alumnoController {
+    @Autowired
+    alumnoServices AlumnoServices;
+
+    @GetMapping()
+    public ArrayList<alumno> obtenerAlumnos(){
+        return AlumnoServices.obtenerAlumnos();
+    }
+
+    @PostMapping()
+    public alumno guardarUsuario(@RequestBody alumno usuario){
+        return this.AlumnoServices.guardarAlumno(usuario);
+    }
+
+    @GetMapping( path = "/{id}")
+    public Optional<alumno> obtenerUsuarioPorId(@PathVariable("id") Long id) {
+        return this.AlumnoServices.obtenerPorId(id);
+    }
+
+    // @GetMapping("/query")
+    // public ArrayList<UsuarioModel> obtenerUsuarioPorPrioridad(@RequestParam("prioridad") Integer prioridad){
+    //     return this.usuarioService.obtenerPorPrioridad(prioridad);
+    // }
+
+    @DeleteMapping( path = "/{id}")
+    public String eliminarPorId(@PathVariable("id") Long id){
+        boolean ok = this.AlumnoServices.eliminarAlumno(id);
+        if (ok){
+            return "Se eliminó el documento con id " + id;
+        }else{
+            return "No pudo eliminar el documento con id" + id;
+        }
+    }
+
+}
