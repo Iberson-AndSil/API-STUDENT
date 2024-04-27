@@ -1,0 +1,4 @@
+com\example\demo\DemoApplication.class
+com\example\demo\repositories\alumnoRepositorie.class
+com\example\demo\services\alumnoServices.class
+com\example\demo\models\alumno.class
