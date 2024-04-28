@@ -1,1 +1,0 @@
-FROM amazoncorretto:18-alpine-jdk
